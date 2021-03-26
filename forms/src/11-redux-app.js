@@ -1,13 +1,15 @@
 import React from 'react';
 import thunkMiddleware from 'redux-thunk';
 import {connect, Provider} from 'react-redux';
-import {createStore, applyMiddleware} from 'redux';
+import {createStore, applyMiddleware, compose} from 'redux';
 import {reducer} from './11-redux-reducer.js';
 import {fetchPeople, savePeople} from './11-redux-actions.js';
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const Form = require('./11-redux-form.js');
 
-const store = createStore(reducer, applyMiddleware(thunkMiddleware));
+const store = createStore(reducer, composeEnhancers(applyMiddleware(thunkMiddleware)));
 
 const ReduxForm = connect(mapStateToProps, mapDispatchToProps)(Form);
 

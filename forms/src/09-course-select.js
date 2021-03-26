@@ -23,14 +23,15 @@ module.exports = class extends React.Component {
     _loading: false
   };
 
-  getDerivedStateFromProps(update) {
-    return {
-      department: update.department,
-      course: update.course
-    };
-  }
+  // getDerivedStateFromProps(update) {
+  //   return {
+  //     department: update.department,
+  //     course: update.course
+  //   };
+  // }
 
   onSelectDepartment = evt => {
+    console.log(evt.target.value)
     const department = evt.target.value;
     const course = null;
     this.setState({department, course});
@@ -49,6 +50,7 @@ module.exports = class extends React.Component {
   fetch = department => {
     this.setState({_loading: true, courses: []});
     apiClient(department).then(courses => {
+      console.log(courses)
       this.setState({_loading: false, courses: courses});
     });
   };
@@ -70,6 +72,7 @@ module.exports = class extends React.Component {
     if (this.state._loading) {
       return <img alt="loading" src="/img/loading.gif" />;
     }
+    console.log(this.state)
     if (!this.state.department || !this.state.courses.length) return <span />;
 
     return (
