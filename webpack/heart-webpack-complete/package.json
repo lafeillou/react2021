@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "1.1.1",
-    "concurrently": "3.4.0"
+    "concurrently": "3.4.0",
+    "react-scripts": "1.1.1"
   },
   "dependencies": {
     "react": "16.12.0",
